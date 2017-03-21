@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var words = ["javascript","turtle","monkey","lion","tiger","elephant","duck","shark"];
+var word = words[Math.floor(Math.random() * words.length)];
+
+var answerArray = [];
+for(var i = 0;i < words.length;i++){
+    answerArray[i] = "-";
+}
+var remainingLetters = word.length;
+
+while(remainingLetters > 0){
+    alert(answerArray.join(" "));
+    var guess = prompt("please enter your guess.");
+    if(guess === null){
+        break;
+    }
+    else if(guess.length > 1){
+        alert("please enter a single letter.")
+    }
+    else{
+        for(var j = 0;j < word.length;j++){
+            if(word[j] === guess){
+                answerArray[j] = guess;
+                remainingLetters--;
+            }
+        }
+    }
+}
+alert(answerArray.join(" "));
+alert("Good job!The answer was " + word);
+</script>
+</head>
+<body></body>
+</html>
