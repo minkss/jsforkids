@@ -6,7 +6,7 @@ var words = ["javascript","turtle","monkey","lion","tiger","elephant","duck","sh
 var word = words[Math.floor(Math.random() * words.length)];
 
 var answerArray = [];
-for(var i = 0;i < words.length;i++){
+for(var i = 0;i < word.length;i++){
     answerArray[i] = "-";
 }
 var remainingLetters = word.length;
@@ -21,6 +21,7 @@ while(remainingLetters > 0){
         alert("please enter a single letter.")
     }
     else{
+        guess = guess.toLowerCase();
         for(var j = 0;j < word.length;j++){
             if(word[j] === guess){
                 answerArray[j] = guess;
