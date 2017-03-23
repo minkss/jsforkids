@@ -53,22 +53,24 @@
         var reset = function(){
             clicks = 0;
             target = getTarget();
-            console.log("x: " + target.x + " y: " + target.y);
+            $("#distance").text("Game reseted! You got 12 chance!");
         }
         var width = 400;
         var height = 400;
-        var clicks = 0;
         var target = getTarget();
-        console.log("x: " + target.x + " y: " + target.y);
+        var clicks = 0;
         var limit = 12;
-
+        var distance = 0;
+        var distancceHint = "";
+        var remainingClicks = 0;
 
         $("#map").click(function(event){
             clicks++;
             if(clicks < limit){
-                var distance = getDistance(event,target);
-                var distancceHint = getDistanceHint(distance);
-                $("#distance").text(distancceHint);
+                distance = getDistance(event,target);
+                distancceHint = getDistanceHint(distance);
+                remainingClicks = limit - clicks;
+                $("#distance").text(distancceHint + " you still got " + remainingClicks + " chance!");
                 if(distance < 8){
                     alert("found treasure in " + clicks + " clicks!");
                     reset();
