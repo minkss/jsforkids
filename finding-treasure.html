@@ -13,13 +13,11 @@
     /*
         pageX,pageY;offsetX,offsetY
     */
-        var width = 400;
-        var height = 400;
+
         var getRandomNumber = function(size){
             return Math.floor(Math.random() * size);
         }
-        var target = {x: getRandomNumber(width),y: getRandomNumber(height)};
-        console.log("x: " + target.x + " y: " + target.y);
+
         var getDistance = function(event,target){
             var diffX = target.x - event.offsetX;
             var diffY = target.y - event.offsetY;
@@ -27,9 +25,6 @@
             return distance;
         }
         var getDistanceHint = function(distance){
-            if(distance < 8){
-                return "You win!"
-            }
             if(distance < 10){
                 return "Bolling hot!";
             }
@@ -52,10 +47,29 @@
                 return "Freezing!"
             }
         }
+        var getTarget = function(){
+            return {x: getRandomNumber(width),y: getRandomNumber(height)};
+        }
+        var reset = function(){
+            clicks = 0;
+            target = getTarget();
+            console.log("x: " + target.x + " y: " + target.y);
+        }
+        var width = 400;
+        var height = 400;
+        var clicks = 0;
+        var target = getTarget();
+        console.log("x: " + target.x + " y: " + target.y);
+
         $("#map").click(function(event){
+            clicks++;
             var distance = getDistance(event,target);
             var distancceHint = getDistanceHint(distance);
             $("#distance").text(distancceHint);
+            if(distance < 8){
+                alert("found treasure in " + clicks + " clicks!");
+                reset();
+            }
         });
     </script>
 </body>
