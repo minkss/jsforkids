@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>interval</title>
+</head>
+<body>
+    <h1 id="heading">Hello World!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+        var position = [{left: 200},{top: 200},{left: 0},{top: 0}];
+        var index = 0;
+        var interval = 1000;
+        var clicks = 0;
+        var squareMove = function(){
+            $("h1").offset(position[index]);
+            i++;
+            if(index >= position.length){
+                index = 0;
+            }
+        }
+        var intervalId = setInterval(squareMove,interval);
+        $("h1").click(function(){
+            clicks++;
+            clearInterval(intervalId);
+            interval /= 2;
+            intervalId = setInterval(squareMove,interval);
+            if(clicks === 10){
+                $("h1").text("You win!");
+                clicks = 0;
+                interval = 1000;
+            }
+            else{
+                $("h1").text("you have clicked " + clicks + " times");
+            }
+        });
+    </script>
+</body>
+</html>

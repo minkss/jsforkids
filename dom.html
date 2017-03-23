@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playing with the dom</title>
+</head>
+<body>
+    <h1 id="main-heading">Hello world!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+        /*
+            When you call a method on a jQuery object,
+            the method usually returns the original object that it was
+            called on.
+        */
+        var doHomeworkAlarm = function (a) {
+            console.log(a);
+            alert("Hey! You need to do your homework!");
+        };
+        var timeoutId = setTimeout(doHomeworkAlarm("hello"), 6000);
+        /*
+            如果你给doHomeworkAlarm一个参数，就像上面那样，
+            那么这就是一个函数调用，回立即执行，所以最后实际传给setTimeout()的是其返回值，undefined
+        */
+    </script>
+</body>
+</html>
