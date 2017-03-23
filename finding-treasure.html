@@ -60,14 +60,22 @@
         var clicks = 0;
         var target = getTarget();
         console.log("x: " + target.x + " y: " + target.y);
+        var limit = 12;
+
 
         $("#map").click(function(event){
             clicks++;
-            var distance = getDistance(event,target);
-            var distancceHint = getDistanceHint(distance);
-            $("#distance").text(distancceHint);
-            if(distance < 8){
-                alert("found treasure in " + clicks + " clicks!");
+            if(clicks < limit){
+                var distance = getDistance(event,target);
+                var distancceHint = getDistanceHint(distance);
+                $("#distance").text(distancceHint);
+                if(distance < 8){
+                    alert("found treasure in " + clicks + " clicks!");
+                    reset();
+                }
+            }
+            else{
+                alert("Game Over!");
                 reset();
             }
         });
